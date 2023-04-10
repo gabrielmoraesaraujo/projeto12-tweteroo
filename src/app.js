@@ -12,15 +12,25 @@ app.post("/sing-up", (req, res) => {
     const{username, avatar} = req.body
 
     if(!username || !avatar){
-        res.status(400).send('Entre com um nome de usuario e avatar valido')
+        res.status(400).send("Entre com um nome de usuario e avatar válido")
         return
     }
 
     user.push({username, avatar})
-    res.status(200).send('ok')
+    res.status(200).send("OK")
 })
 
+app.post("tweets", (req, res) => {
+    const {username, tweet} = req.body
 
+    if(!username || !tweet){
+        res.status(400).send("UNAUTHORIZED")
+        return
+    }
+
+    tweets.push({username,tweet})
+    res.status(200).send("OK")
+})
 
 app.get("/tweets", (req, res) => {
     
