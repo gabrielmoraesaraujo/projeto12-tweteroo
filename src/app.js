@@ -38,13 +38,15 @@ app.get("/tweets", (req, res) => {
 
     for(let i=0; i<tweets.length; i++){
         for(let j=0; j<users.length; j++){
-            if(user[j].username === tweets [i].username){
-                unity.push({})
+            if(users[j].username === tweets [i].username){
+                unity.push({username:users[j].username, avatar:users[j].avatar, tweet:tweets[i].tweet})
             }
         }
     }
 
-    res.send(tweets)
+    const reverse_unity = unity.reverse()
+
+    res.status(200).send(reverse_unity.slice(0,10))
 
 })
 
