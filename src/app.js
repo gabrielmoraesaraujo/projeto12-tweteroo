@@ -16,11 +16,11 @@ app.post("/sing-up", (req, res) => {
         return
     }
 
-    user.push({username, avatar})
+    users.push({username, avatar})
     res.status(200).send("OK")
 })
 
-app.post("tweets", (req, res) => {
+app.post("/tweets", (req, res) => {
     const {username, tweet} = req.body
 
     if(!username || !tweet){
@@ -34,7 +34,7 @@ app.post("tweets", (req, res) => {
 
 app.get("/tweets", (req, res) => {
     
-    const unity = [ ]
+    const unity = [];
 
     for(let i=0; i<tweets.length; i++){
         for(let j=0; j<users.length; j++){
